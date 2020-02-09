@@ -1,0 +1,18 @@
+2020-02-09 19:25:32,829  INFO [main] Generic:68 - Trying to find Element By : By.id: Email
+2020-02-09 19:25:33,034  INFO [main] Generic:72 - Found Element By : By.id: Email
+2020-02-09 19:25:33,468  INFO [main] Generic:68 - Trying to find Element By : By.id: Email
+2020-02-09 19:25:33,694  INFO [main] Generic:72 - Found Element By : By.id: Email
+2020-02-09 19:25:33,788  INFO [main] Generic:68 - Trying to find Element By : By.id: Email
+2020-02-09 19:25:34,130  INFO [main] Generic:72 - Found Element By : By.id: Email
+2020-02-09 19:25:36,100  INFO [main] Generic:68 - Trying to find Element By : By.id: Password
+2020-02-09 19:25:36,145  INFO [main] Generic:72 - Found Element By : By.id: Password
+2020-02-09 19:25:36,586  INFO [main] Generic:68 - Trying to find Element By : By.id: Password
+2020-02-09 19:25:36,700  INFO [main] Generic:72 - Found Element By : By.id: Password
+2020-02-09 19:25:36,740  INFO [main] Generic:68 - Trying to find Element By : By.id: Password
+2020-02-09 19:25:37,091  INFO [main] Generic:72 - Found Element By : By.id: Password
+2020-02-09 19:25:38,678  INFO [main] Generic:68 - Trying to find Element By : By.xpath: //*[contains(@value,'Log in')]
+2020-02-09 19:25:39,061  INFO [main] Generic:72 - Found Element By : By.xpath: //*[contains(@value,'Log in')]
+2020-02-09 19:25:39,581  INFO [main] Generic:68 - Trying to find Element By : By.xpath: //*[contains(@value,'Log in')]
+2020-02-09 19:25:39,843  INFO [main] Generic:72 - Found Element By : By.xpath: //*[contains(@value,'Log in')]
+2020-02-09 19:25:39,846  INFO [main] Generic:40 - Trying to click on: [[ChromeDriver: chrome on WINDOWS (0125e01f856bc818beaab9b400407559)] -> xpath: //*[contains(@value,'Log in')]]
+2020-02-09 19:25:45,216  INFO [main] Generic:44 - Clicked on: [[ChromeDriver: chrome on WINDOWS (0125e01f856bc818beaab9b400407559)] -> xpath: //*[contains(@value,'Log in')]]
