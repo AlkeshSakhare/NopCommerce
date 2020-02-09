@@ -1,5 +1,11 @@
 package com.nopcommerce.TestUtils;
 
+import java.awt.AWTException;
+import java.awt.HeadlessException;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,6 +16,8 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.imageio.ImageIO;
 
 import org.apache.commons.compress.archivers.dump.InvalidFormatException;
 import org.apache.commons.io.FileUtils;
@@ -25,6 +33,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -45,6 +54,9 @@ public class TestUtil extends TestBase {
 	public static XSSFSheet ws;
 	public static XSSFRow row;
 	public static XSSFCell cell;
+	public static String screenshotPath = userdir + "/screenshots/";
+	public static String timeStamp = new SimpleDateFormat("dd.MM.yyyy.HH.mm.ss").format(new Date());
+	public static String downloadPath = userdir + "/downloads/";
 
 	public static Object[][] getTestData(String sheetName) throws InvalidFormatException {
 		FileInputStream file = null;
@@ -140,7 +152,7 @@ public class TestUtil extends TestBase {
 		return title;
 	}
 
-	public static String getPageInnerText(WebDriver driver) {
+	public static String getPageInnerText() {
 		String pageText = js.executeScript("return document.documentElement.innerText;").toString();
 		return pageText;
 	}
@@ -161,22 +173,39 @@ public class TestUtil extends TestBase {
 		logger.info("********** " + " Ending " + message + " ********** ");
 	}
 
-	public static String captureScreen(WebDriver driver, String tname) throws IOException {
-		TakesScreenshot ts = (TakesScreenshot) driver;
-		File source = ts.getScreenshotAs(OutputType.FILE);
-		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-		String filePath = System.getProperty("user.dir") + "/screenshots/" + tname + "_" + timeStamp + ".png";
-		File target = new File(filePath);
-		FileUtils.copyFile(source, target);
-		System.out.println("Screenshot taken");
+	public static String captureScreen(String tname) {
+		String filePath = screenshotPath + tname + "_" + timeStamp + ".png";
+		try {
+			File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			FileUtils.copyFile(source, new File(filePath));
+		} catch (WebDriverException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return filePath;
 	}
 
-	public static void takeScreenshotAtEndOfTest() throws IOException {
-		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		String currentDir = System.getProperty("user.dir");
-		FileUtils.copyFile(scrFile, new File(currentDir + "/screenshots/" + timeStamp + ".png"));
+	public static String takeFullScreenShot(String tname) {
+		String filePath = screenshotPath + tname + "_" + timeStamp + ".png";
+		try {
+			Robot robot = new Robot();
+			BufferedImage screenShot = robot
+					.createScreenCapture(new Rectangle(Toolkit.getDefaultToolkit().getScreenSize()));
+			ImageIO.write(screenShot, "JPG", new File(filePath));
+		} catch (HeadlessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (AWTException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return filePath;
 	}
 
 	public String randomestring() {
@@ -189,11 +218,11 @@ public class TestUtil extends TestBase {
 		return (generatedNumber);
 	}
 
-	public static void downloadFile(String url) {
+	public static void downloadFile(String url, String filenameWithExt) {
 		try {
 			URL website = new URL(url);
 			ReadableByteChannel byteChannel = Channels.newChannel(website.openStream());
-			FileOutputStream fileOutputStream = new FileOutputStream(userdir + "/Downloads/sample.png");
+			FileOutputStream fileOutputStream = new FileOutputStream(downloadPath + filenameWithExt);
 			fileOutputStream.getChannel().transferFrom(byteChannel, 0, Long.MAX_VALUE);
 			fileOutputStream.close();
 		} catch (IOException e) {
