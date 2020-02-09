@@ -17,6 +17,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.nopcommerce.TestUtils.TestUtil;
 import com.nopcommerce.TestUtils.WebEventListener;
 import com.paulhammant.ngwebdriver.NgWebDriver;
@@ -38,14 +41,24 @@ public class TestBase {
 	public static WebEventListener eventListener;
 	public static Logger logger;
 	public static String userdir = System.getProperty("user.dir");
+	public static String configPath = userdir + "/config/";
 	public static WebDriverWait exWait;
+	public static ExtentHtmlReporter htmlReporter;
+	public static ExtentReports extent;
+	public static ExtentTest test;
 
 	public TestBase() {
 		try {
+			// property file configuration
 			properties = new Properties();
-			logger = Logger.getLogger("Generic");
-			properties.load(new FileReader(userdir + "/config/config.properties"));
-			PropertyConfigurator.configure(userdir + "/config/log4j.properties");
+			logger = Logger.getLogger("NopCommerce");
+			properties.load(new FileReader(configPath + "config.properties"));
+			// log4j file configuration
+			PropertyConfigurator.configure(configPath + "log4j.properties");
+			// Extend Report configuration
+			htmlReporter = new ExtentHtmlReporter(configPath + "extent.html");
+			extent = new ExtentReports();
+			extent.attachReporter(htmlReporter);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -54,12 +67,10 @@ public class TestBase {
 	}
 
 	public static void initialization() {
-
 		browser = properties.getProperty("browser");
 		username = properties.getProperty("username");
 		password = properties.getProperty("password");
 		url = properties.getProperty("url");
-
 		switch (browser) {
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
@@ -75,7 +86,7 @@ public class TestBase {
 			break;
 		default:
 			System.out.println("You have given browserName as : " + browser
-					+ "  Please give valid web browser name in testng.xml");
+					+ "  Please give valid web browser name in config.properties file");
 			break;
 		}
 		exWait = new WebDriverWait(driver, TestUtil.EXPLICIT_WAIT);
@@ -85,9 +96,11 @@ public class TestBase {
 		e_driver.register(eventListener);
 		driver = e_driver;
 		ngWebDriver = new NgWebDriver((JavascriptExecutor) driver);
+
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.get(url);
+
 		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
 

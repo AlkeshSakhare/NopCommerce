@@ -28,25 +28,37 @@ public class LoginTest extends TestBase {
 		loginPage = new LoginPage();
 	}
 
-	@Test(priority = 1, enabled = false)
+	@Test(priority = 1)
 	public void verifyLogin() {
 		try {
+			TestUtil.startTcLogger("verifyLogin");
 			loginPage.logintoApp(username, password);
-			Assert.assertEquals(driver.getTitle(), "Dashboard / nopCommerce administration");
+			if (!driver.getPageSource().contains("Login was unsuccessful")) {
+				TestUtil.executionPassFail("verifyLogin", "Pass");
+				Assert.assertTrue(true, "Login Successful");
+			} else {
+				TestUtil.executionPassFail("verifyLogin", "Fail");
+				Assert.assertTrue(false, "Login unsuccessful");
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.err.println(e);
+		} finally {
+			TestUtil.endTcLogger("verifyLogin");
 		}
 	}
 
-	@Test(dataProvider = "getcredentialsdata")
+	@Test(dataProvider = "getcredentialsdata", enabled = false)
 	public void verifyLoginByDD(String un, String ps) throws IOException {
 		try {
+			TestUtil.startTcLogger("verifyLoginByDD");
 			loginPage.logintoApp(un, ps);
 			if (driver.getPageSource().contains("Login was unsuccessful")) {
+				TestUtil.executionPassFail("verifyLoginByDD", "fail");
 				TestUtil.setCellData("Login", i, 2, "Fail");
-				Assert.assertTrue(true, "Login Unsuccessful");
-			} else if (driver.getTitle().contains("Dashboard")) {
+				Assert.assertTrue(false, "Login Unsuccessful");
+			} else {
+				TestUtil.executionPassFail("verifyLoginByDD", "Pass");
 				TestUtil.setCellData("Login", i, 2, "Success");
 				Assert.assertTrue(true, "Login Successful");
 			}

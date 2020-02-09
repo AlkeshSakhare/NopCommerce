@@ -1,5 +1,7 @@
 package com.nopcommerce.TestPage;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -23,10 +25,15 @@ public class LoginPage extends TestBase {
 	WebElement loginBtn;
 
 	public void logintoApp(String user, String pass) {
-		TestUtil.sendKeysClear(emailTxt, user);
-		System.out.println(user);
-		System.out.println(pass);
-		TestUtil.sendKeysClear(passwordTxt, pass);
-		TestUtil.clickHighlight(loginBtn);
+		try {
+			TestUtil.sendKeysClear(emailTxt, user);
+			System.out.println(user);
+			System.out.println(pass);
+			TestUtil.sendKeysClear(passwordTxt, pass);
+			TestUtil.clickHighlight(loginBtn);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

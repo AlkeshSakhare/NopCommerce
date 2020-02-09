@@ -6,8 +6,8 @@
       <class name="com.nopcommerce.TestCases.LoginTest">
         <methods>
           <include name="tearDown"/>
-          <include name="verifyLoginByDD" invocation-numbers="0"/>
           <include name="setUp"/>
+          <include name="verifyLogin"/>
         </methods>
       </class> <!-- com.nopcommerce.TestCases.LoginTest -->
     </classes>

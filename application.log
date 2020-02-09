@@ -1,18 +1,82 @@
-2020-02-09 19:25:32,829  INFO [main] Generic:68 - Trying to find Element By : By.id: Email
-2020-02-09 19:25:33,034  INFO [main] Generic:72 - Found Element By : By.id: Email
-2020-02-09 19:25:33,468  INFO [main] Generic:68 - Trying to find Element By : By.id: Email
-2020-02-09 19:25:33,694  INFO [main] Generic:72 - Found Element By : By.id: Email
-2020-02-09 19:25:33,788  INFO [main] Generic:68 - Trying to find Element By : By.id: Email
-2020-02-09 19:25:34,130  INFO [main] Generic:72 - Found Element By : By.id: Email
-2020-02-09 19:25:36,100  INFO [main] Generic:68 - Trying to find Element By : By.id: Password
-2020-02-09 19:25:36,145  INFO [main] Generic:72 - Found Element By : By.id: Password
-2020-02-09 19:25:36,586  INFO [main] Generic:68 - Trying to find Element By : By.id: Password
-2020-02-09 19:25:36,700  INFO [main] Generic:72 - Found Element By : By.id: Password
-2020-02-09 19:25:36,740  INFO [main] Generic:68 - Trying to find Element By : By.id: Password
-2020-02-09 19:25:37,091  INFO [main] Generic:72 - Found Element By : By.id: Password
-2020-02-09 19:25:38,678  INFO [main] Generic:68 - Trying to find Element By : By.xpath: //*[contains(@value,'Log in')]
-2020-02-09 19:25:39,061  INFO [main] Generic:72 - Found Element By : By.xpath: //*[contains(@value,'Log in')]
-2020-02-09 19:25:39,581  INFO [main] Generic:68 - Trying to find Element By : By.xpath: //*[contains(@value,'Log in')]
-2020-02-09 19:25:39,843  INFO [main] Generic:72 - Found Element By : By.xpath: //*[contains(@value,'Log in')]
-2020-02-09 19:25:39,846  INFO [main] Generic:40 - Trying to click on: [[ChromeDriver: chrome on WINDOWS (0125e01f856bc818beaab9b400407559)] -> xpath: //*[contains(@value,'Log in')]]
-2020-02-09 19:25:45,216  INFO [main] Generic:44 - Clicked on: [[ChromeDriver: chrome on WINDOWS (0125e01f856bc818beaab9b400407559)] -> xpath: //*[contains(@value,'Log in')]]
+2020-02-10 01:25:23,464  INFO [main] NopCommerce:205 - **********  Starting verifyLogin ********** 
+2020-02-10 01:25:24,516  INFO [main] NopCommerce:68 - Trying to find Element By : By.id: Email
+2020-02-10 01:25:24,606  INFO [main] NopCommerce:72 - Found Element By : By.id: Email
+2020-02-10 01:25:24,781  INFO [main] NopCommerce:68 - Trying to find Element By : By.id: Email
+2020-02-10 01:25:24,797  INFO [main] NopCommerce:72 - Found Element By : By.id: Email
+2020-02-10 01:25:24,821  INFO [main] NopCommerce:68 - Trying to find Element By : By.id: Email
+2020-02-10 01:25:24,840  INFO [main] NopCommerce:72 - Found Element By : By.id: Email
+2020-02-10 01:25:25,409  INFO [main] NopCommerce:68 - Trying to find Element By : By.id: Email
+2020-02-10 01:25:25,426  INFO [main] NopCommerce:72 - Found Element By : By.id: Email
+2020-02-10 01:25:25,876  INFO [main] NopCommerce:68 - Trying to find Element By : By.id: Password
+2020-02-10 01:25:25,907  INFO [main] NopCommerce:72 - Found Element By : By.id: Password
+2020-02-10 01:25:25,970  INFO [main] NopCommerce:68 - Trying to find Element By : By.id: Password
+2020-02-10 01:25:26,094  INFO [main] NopCommerce:72 - Found Element By : By.id: Password
+2020-02-10 01:25:26,111  INFO [main] NopCommerce:68 - Trying to find Element By : By.id: Password
+2020-02-10 01:25:26,128  INFO [main] NopCommerce:72 - Found Element By : By.id: Password
+2020-02-10 01:25:26,312  INFO [main] NopCommerce:68 - Trying to find Element By : By.id: Password
+2020-02-10 01:25:26,328  INFO [main] NopCommerce:72 - Found Element By : By.id: Password
+2020-02-10 01:25:26,725  INFO [main] NopCommerce:68 - Trying to find Element By : By.xpath: //*[contains(@value,'Log in')]
+2020-02-10 01:25:26,826  INFO [main] NopCommerce:72 - Found Element By : By.xpath: //*[contains(@value,'Log in')]
+2020-02-10 01:25:26,856  INFO [main] NopCommerce:68 - Trying to find Element By : By.xpath: //*[contains(@value,'Log in')]
+2020-02-10 01:25:26,887  INFO [main] NopCommerce:72 - Found Element By : By.xpath: //*[contains(@value,'Log in')]
+2020-02-10 01:25:27,314  INFO [main] NopCommerce:68 - Trying to find Element By : By.xpath: //*[contains(@value,'Log in')]
+2020-02-10 01:25:27,335  INFO [main] NopCommerce:72 - Found Element By : By.xpath: //*[contains(@value,'Log in')]
+2020-02-10 01:25:27,336  INFO [main] NopCommerce:40 - Trying to click on: [[ChromeDriver: chrome on WINDOWS (6384da529880ccca63ffeedf82d70b06)] -> xpath: //*[contains(@value,'Log in')]]
+2020-02-10 01:25:32,997  INFO [main] NopCommerce:64 - Exception occured: org.openqa.selenium.TimeoutException: timeout: Timed out receiving message from renderer: 0.097
+  (Session info: chrome=80.0.3987.87)
+Build info: version: '4.0.0-alpha-4', revision: 'c2d955b49e'
+System info: host: 'ALKESH-PC', ip: '192.168.1.39', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_111'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.87, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\Alkesh\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:60519}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 6384da529880ccca63ffeedf82d70b06
+2020-02-10 01:25:33,014  INFO [main] NopCommerce:219 - **********  Ending verifyLogin ********** 
+2020-02-10 01:26:32,933  INFO [main] NopCommerce:64 - Exception occured: org.openqa.selenium.remote.UnreachableBrowserException: Error communicating with the remote browser. It may have died.
+Build info: version: '4.0.0-alpha-4', revision: 'c2d955b49e'
+System info: host: 'ALKESH-PC', ip: '192.168.1.39', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_111'
+Driver info: driver.version: EventFiringWebDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.87, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\Alkesh\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:60519}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 6384da529880ccca63ffeedf82d70b06
+2020-02-10 01:26:33,043 DEBUG [main] cache:45 - Couldn't find template in cache for "index.ftl"("en", UTF-8, parsed); will try to load it.
+2020-02-10 01:26:33,043 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("index_en.ftl"): Not found
+2020-02-10 01:26:33,043 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("index.ftl"): Found
+2020-02-10 01:26:33,043 DEBUG [main] cache:45 - Loading template for "index.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/Alkesh/.m2/repository/com/aventstack/extentreports/3.1.2/extentreports-3.1.2.jar!/com/aventstack/extentreports/view/html-report/index.ftl"
+2020-02-10 01:26:33,698 DEBUG [main] cache:45 - Couldn't find template in cache for "head.ftl"("en", UTF-8, parsed); will try to load it.
+2020-02-10 01:26:33,698 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("head_en.ftl"): Not found
+2020-02-10 01:26:33,698 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("head.ftl"): Found
+2020-02-10 01:26:33,698 DEBUG [main] cache:45 - Loading template for "head.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/Alkesh/.m2/repository/com/aventstack/extentreports/3.1.2/extentreports-3.1.2.jar!/com/aventstack/extentreports/view/html-report/head.ftl"
+2020-02-10 01:26:33,714 DEBUG [main] cache:45 - Couldn't find template in cache for "nav.ftl"("en", UTF-8, parsed); will try to load it.
+2020-02-10 01:26:33,714 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("nav_en.ftl"): Not found
+2020-02-10 01:26:33,714 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("nav.ftl"): Found
+2020-02-10 01:26:33,714 DEBUG [main] cache:45 - Loading template for "nav.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/Alkesh/.m2/repository/com/aventstack/extentreports/3.1.2/extentreports-3.1.2.jar!/com/aventstack/extentreports/view/html-report/nav.ftl"
+2020-02-10 01:26:33,745 DEBUG [main] cache:45 - Couldn't find template in cache for "test-view/test-view.ftl"("en", UTF-8, parsed); will try to load it.
+2020-02-10 01:26:33,745 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("test-view/test-view_en.ftl"): Not found
+2020-02-10 01:26:33,745 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("test-view/test-view.ftl"): Found
+2020-02-10 01:26:33,761 DEBUG [main] cache:45 - Loading template for "test-view/test-view.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/Alkesh/.m2/repository/com/aventstack/extentreports/3.1.2/extentreports-3.1.2.jar!/com/aventstack/extentreports/view/html-report/test-view/test-view.ftl"
+2020-02-10 01:26:33,776 DEBUG [main] cache:45 - Couldn't find template in cache for "test-view/test-view-charts.ftl"("en", UTF-8, parsed); will try to load it.
+2020-02-10 01:26:33,776 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("test-view/test-view-charts_en.ftl"): Not found
+2020-02-10 01:26:33,776 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("test-view/test-view-charts.ftl"): Found
+2020-02-10 01:26:33,776 DEBUG [main] cache:45 - Loading template for "test-view/test-view-charts.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/Alkesh/.m2/repository/com/aventstack/extentreports/3.1.2/extentreports-3.1.2.jar!/com/aventstack/extentreports/view/html-report/test-view/test-view-charts.ftl"
+2020-02-10 01:26:33,823 DEBUG [main] cache:45 - Couldn't find template in cache for "test-view/standard.ftl"("en", UTF-8, parsed); will try to load it.
+2020-02-10 01:26:33,823 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("test-view/standard_en.ftl"): Not found
+2020-02-10 01:26:33,823 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("test-view/standard.ftl"): Found
+2020-02-10 01:26:33,839 DEBUG [main] cache:45 - Loading template for "test-view/standard.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/Alkesh/.m2/repository/com/aventstack/extentreports/3.1.2/extentreports-3.1.2.jar!/com/aventstack/extentreports/view/html-report/test-view/standard.ftl"
+2020-02-10 01:26:33,870 DEBUG [main] cache:45 - Couldn't find template in cache for "category-view/category-view.ftl"("en", UTF-8, parsed); will try to load it.
+2020-02-10 01:26:33,870 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("category-view/category-view_en.ftl"): Not found
+2020-02-10 01:26:33,870 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("category-view/category-view.ftl"): Found
+2020-02-10 01:26:33,870 DEBUG [main] cache:45 - Loading template for "category-view/category-view.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/Alkesh/.m2/repository/com/aventstack/extentreports/3.1.2/extentreports-3.1.2.jar!/com/aventstack/extentreports/view/html-report/category-view/category-view.ftl"
+2020-02-10 01:26:33,870 DEBUG [main] cache:45 - Couldn't find template in cache for "author-view/author-view.ftl"("en", UTF-8, parsed); will try to load it.
+2020-02-10 01:26:33,870 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("author-view/author-view_en.ftl"): Not found
+2020-02-10 01:26:33,886 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("author-view/author-view.ftl"): Found
+2020-02-10 01:26:33,886 DEBUG [main] cache:45 - Loading template for "author-view/author-view.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/Alkesh/.m2/repository/com/aventstack/extentreports/3.1.2/extentreports-3.1.2.jar!/com/aventstack/extentreports/view/html-report/author-view/author-view.ftl"
+2020-02-10 01:26:33,901 DEBUG [main] cache:45 - Couldn't find template in cache for "exception-view/exception-view.ftl"("en", UTF-8, parsed); will try to load it.
+2020-02-10 01:26:33,901 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("exception-view/exception-view_en.ftl"): Not found
+2020-02-10 01:26:33,901 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("exception-view/exception-view.ftl"): Found
+2020-02-10 01:26:33,901 DEBUG [main] cache:45 - Loading template for "exception-view/exception-view.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/Alkesh/.m2/repository/com/aventstack/extentreports/3.1.2/extentreports-3.1.2.jar!/com/aventstack/extentreports/view/html-report/exception-view/exception-view.ftl"
+2020-02-10 01:26:33,901 DEBUG [main] cache:45 - Couldn't find template in cache for "dashboard-view/dashboard-view.ftl"("en", UTF-8, parsed); will try to load it.
+2020-02-10 01:26:33,901 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("dashboard-view/dashboard-view_en.ftl"): Not found
+2020-02-10 01:26:33,901 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("dashboard-view/dashboard-view.ftl"): Found
+2020-02-10 01:26:33,917 DEBUG [main] cache:45 - Loading template for "dashboard-view/dashboard-view.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/Alkesh/.m2/repository/com/aventstack/extentreports/3.1.2/extentreports-3.1.2.jar!/com/aventstack/extentreports/view/html-report/dashboard-view/dashboard-view.ftl"
+2020-02-10 01:26:33,917 DEBUG [main] cache:45 - Couldn't find template in cache for "logs-view/testrunner-logs-view.ftl"("en", UTF-8, parsed); will try to load it.
+2020-02-10 01:26:33,917 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("logs-view/testrunner-logs-view_en.ftl"): Not found
+2020-02-10 01:26:33,917 DEBUG [main] cache:45 - TemplateLoader.findTemplateSource("logs-view/testrunner-logs-view.ftl"): Found
+2020-02-10 01:26:33,917 DEBUG [main] cache:45 - Loading template for "logs-view/testrunner-logs-view.ftl"("en", UTF-8, parsed) from "jar:file:/C:/Users/Alkesh/.m2/repository/com/aventstack/extentreports/3.1.2/extentreports-3.1.2.jar!/com/aventstack/extentreports/view/html-report/logs-view/testrunner-logs-view.ftl"

@@ -38,6 +38,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
 import com.nopcommerce.TestBase.TestBase;
 
 public class TestUtil extends TestBase {
@@ -101,26 +103,59 @@ public class TestUtil extends TestBase {
 		js.executeScript("arguments[0].style.border='3px solid red'", element);
 	}
 
-	public static void sendKeysClear(WebElement element, String data) {
-		element.clear();
-		drawBorder(element);
-		element.sendKeys(data);
+	public static void sendKeysClear(WebElement element, String data) throws IOException {
+		try {
+			element.clear();
+			drawBorder(element);
+			element.sendKeys(data);
+			test.log(Status.INFO, "Enterting text: " + data + " on " + element.getText(),
+					MediaEntityBuilder.createScreenCaptureFromPath(TestUtil.captureScreen()).build());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			test.log(Status.INFO, "Unable to enter text on field: " + element.getText(),
+					MediaEntityBuilder.createScreenCaptureFromPath(TestUtil.captureScreen()).build());
+		}
 	}
 
-	public static void clickHighlight(WebElement element) {
-		drawBorder(element);
-		element.click();
+	public static void sendKeysByJS(WebElement element, String data) throws IOException {
+		try {
+			js.executeScript("arguments[0].setAttribute('value', '')", element);
+			drawBorder(element);
+			js.executeScript("arguments[0].setAttribute('value', '" + data + "')", element);
+			test.log(Status.INFO, "Enterting text: " + data + " on " + element.getText(),
+					MediaEntityBuilder.createScreenCaptureFromPath(TestUtil.captureScreen()).build());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			test.log(Status.INFO, "Unable to enter text on field: " + element.getText(),
+					MediaEntityBuilder.createScreenCaptureFromPath(TestUtil.captureScreen()).build());
+		}
 	}
 
-	public static void sendKeysByJS(WebElement element, String data) {
-		js.executeScript("arguments[0].setAttribute('value', '')", element);
-		drawBorder(element);
-		js.executeScript("arguments[0].setAttribute('value', '" + data + "')", element);
+	public static void clickHighlight(WebElement element) throws IOException {
+		try {
+			drawBorder(element);
+			test.log(Status.INFO, "Clicking on button " + element.getText(),
+					MediaEntityBuilder.createScreenCaptureFromPath(TestUtil.captureScreen()).build());
+			element.click();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			test.log(Status.INFO, "Unable to click on button: " + element.getText(),
+					MediaEntityBuilder.createScreenCaptureFromPath(TestUtil.captureScreen()).build());
+		}
+
 	}
 
-	public static void clickElementByJS(WebElement element) {
-		drawBorder(element);
-		js.executeScript("arguments[0].click();", element);
+	public static void clickElementByJS(WebElement element) throws IOException {
+		try {
+			drawBorder(element);
+			test.log(Status.INFO, "Clicking on button " + element.getText(),
+					MediaEntityBuilder.createScreenCaptureFromPath(TestUtil.captureScreen()).build());
+			js.executeScript("arguments[0].click();", element);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			test.log(Status.INFO, "Unable to click on button: " + element.getText(),
+					MediaEntityBuilder.createScreenCaptureFromPath(TestUtil.captureScreen()).build());
+		}
 	}
 
 	public static void flash(WebElement element) {
@@ -143,8 +178,8 @@ public class TestUtil extends TestBase {
 		js.executeScript("history.go(0)");
 	}
 
-	public static void navigationByJS() {
-		js.executeScript("window.location = 'http://yahoo.com'");
+	public static void navigationByJS(String url) {
+		js.executeScript("window.location = '" + url + "'");
 	}
 
 	public static String getTitleByJS() {
@@ -165,16 +200,34 @@ public class TestUtil extends TestBase {
 		js.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 
-	public static void startTcLogger(String message) {
-		logger.info("********** " + " Starting " + message + " ********** ");
+	public static void startTcLogger(String testCaseName) {
+		try {
+			logger.info("********** " + " Starting " + testCaseName + " ********** ");
+			test = extent.createTest(testCaseName);
+			test.log(Status.INFO, "Execution started in " + browser,
+					MediaEntityBuilder.createScreenCaptureFromPath(TestUtil.captureScreen()).build());
+			test.log(Status.INFO, "Navigating to " + url,
+					MediaEntityBuilder.createScreenCaptureFromPath(TestUtil.captureScreen()).build());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	public static void endTcLogger(String message) {
-		logger.info("********** " + " Ending " + message + " ********** ");
+	public static void endTcLogger(String testCaseName) {
+		try {
+			logger.info("********** " + " Ending " + testCaseName + " ********** ");
+			test.log(Status.INFO, "Execution completed and closing " + browser,
+					MediaEntityBuilder.createScreenCaptureFromPath(TestUtil.captureScreen()).build());
+			extent.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	public static String captureScreen(String tname) {
-		String filePath = screenshotPath + tname + "_" + timeStamp + ".png";
+	public static String captureScreen() {
+		String filePath = screenshotPath + timeStamp + ".png";
 		try {
 			File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(source, new File(filePath));
@@ -188,8 +241,8 @@ public class TestUtil extends TestBase {
 		return filePath;
 	}
 
-	public static String takeFullScreenShot(String tname) {
-		String filePath = screenshotPath + tname + "_" + timeStamp + ".png";
+	public static String takeFullScreenShot(String testCaseName) {
+		String filePath = screenshotPath + testCaseName + "_" + timeStamp + ".png";
 		try {
 			Robot robot = new Robot();
 			BufferedImage screenShot = robot
@@ -241,4 +294,20 @@ public class TestUtil extends TestBase {
 		WebDriverWait wait = new WebDriverWait(driver, waitTime);
 		wait.until(pageLoadCondition);
 	}
+
+	public static void executionPassFail(String testcaseName, String status) {
+		try {
+			if (status.equalsIgnoreCase("pass")) {
+				test.log(Status.PASS, "verifyLoginByDD PASS",
+						MediaEntityBuilder.createScreenCaptureFromPath(TestUtil.captureScreen()).build());
+			} else if (status.equalsIgnoreCase("fails")) {
+				test.log(Status.FAIL, "verifyLoginByDD FAIL",
+						MediaEntityBuilder.createScreenCaptureFromPath(TestUtil.captureScreen()).build());
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }
